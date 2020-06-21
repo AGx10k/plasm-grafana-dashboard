@@ -17,8 +17,16 @@
   "gnetId": 11784,
   "graphTooltip": 0,
   "id": 9,
-  "iteration": 1592767602441,
-  "links": [],
+  "iteration": 1592768494322,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "github source",
+      "type": "link",
+      "url": "https://github.com/AGx10k/plasm-grafana-dashboard"
+    }
+  ],
   "panels": [
     {
       "alert": {
