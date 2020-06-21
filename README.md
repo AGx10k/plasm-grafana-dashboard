@@ -1,6 +1,6 @@
 # AG plasm-grafana-dashboard (tested for Dusty)
 1. `plasm-node --prometheus-external`
-2. 2. add job named `dusty` to `prometheus.yml`:
+2. add job named `dusty` to `prometheus.yml`:
 ```
   - job_name: dusty
     static_configs:
