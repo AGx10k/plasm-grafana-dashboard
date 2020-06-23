@@ -3,7 +3,7 @@
 
 ![screenshot](https://github.com/AGx10k/plasm-grafana-dashboard/blob/master/plasm-dusty-dashboard-screenshot.png?raw=true)
 
-
+## Installation
 1. `plasm-node --prometheus-external`
 2. add job named `dusty` to `prometheus.yml`:
 ```
