@@ -17,11 +17,12 @@
   "gnetId": 11784,
   "graphTooltip": 0,
   "id": 9,
-  "iteration": 1592768494322,
+  "iteration": 1592894044492,
   "links": [
     {
       "icon": "external link",
       "tags": [],
+      "targetBlank": true,
       "title": "github source",
       "type": "link",
       "url": "https://github.com/AGx10k/plasm-grafana-dashboard"
@@ -134,19 +135,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(substrate_block_height{status=\"best\"}[5m])",
+          "expr": "rate(substrate_block_height{status=\"best\",job=\"dusty\"}[5m])",
           "interval": "",
           "legendFormat": "{{status}}-{{instance}}",
           "refId": "A"
         },
         {
-          "expr": "rate(substrate_block_height{status=\"sync_target\"}[5m])",
+          "expr": "rate(substrate_block_height{status=\"sync_target\",job=\"dusty\"}[5m])",
           "interval": "",
           "legendFormat": "{{status}}-{{instance}}",
           "refId": "B"
         },
         {
-          "expr": "rate(substrate_block_height{status=\"finalized\"}[5m])",
+          "expr": "rate(substrate_block_height{status=\"finalized\",job=\"dusty\"}[5m])",
           "interval": "",
           "legendFormat": "{{status}}-{{instance}}",
           "refId": "C"
@@ -286,7 +287,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "substrate_sub_libp2p_peers_count",
+          "expr": "substrate_sub_libp2p_peers_count{job=\"dusty\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -391,7 +392,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "substrate_memory_usage_bytes ",
+          "expr": "substrate_memory_usage_bytes{job=~\"$job\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -484,7 +485,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "substrate_block_height{instance=~\"$nodeport\"}",
+          "expr": "substrate_block_height{instance=~\"$nodeport\",job=~\"$job\"}",
           "interval": "",
           "legendFormat": "{{status}}",
           "refId": "B"
@@ -580,7 +581,7 @@
       "pluginVersion": "6.7.3",
       "targets": [
         {
-          "expr": "substrate_network_per_sec_bytes{instance=~\"$nodeport\"}",
+          "expr": "substrate_network_per_sec_bytes{instance=~\"$nodeport\",job=~\"$job\"}",
           "interval": "",
           "legendFormat": "{{direction}}",
           "refId": "A"
@@ -634,7 +635,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "substrate_cpu_usage_percentage",
+          "expr": "substrate_cpu_usage_percentage{job=~\"$job\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -724,7 +725,7 @@
       "pluginVersion": "6.7.3",
       "targets": [
         {
-          "expr": "substrate_ready_transactions_number{instance=~\"$nodeport\"}",
+          "expr": "substrate_ready_transactions_number{instance=~\"$nodeport\",job=~\"$job\"}",
           "interval": "",
           "legendFormat": "Number of transactions in the ready queue",
           "refId": "A"
@@ -744,7 +745,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -785,6 +786,10 @@
       },
       {
         "allValue": null,
+        "current": {
+          "text": "Dusty-AGx1-validator:9615",
+          "value": "Dusty-AGx1-validator:9615"
+        },
         "datasource": "Prometheus",
         "definition": "label_values(substrate_block_height{job=~\"$job\"}, instance)",
         "hide": 0,
@@ -831,5 +836,5 @@
   "variables": {
     "list": []
   },
-  "version": 34
+  "version": 36
 }
